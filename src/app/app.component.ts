@@ -1,28 +1,21 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatDrawer, MatDrawerMode } from '@angular/material/sidenav';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { TokenService } from './token.service';
-import { DrawerService } from './drawer.service';
+import { ActivatedRoute, Event, NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent {
   @ViewChild('drawer') public drawer: MatDrawer;
-
-  drawerMode: MatDrawerMode = 'side';
+  isInLoginPage = false;
   isLessThanSmall$: Observable<boolean>;
-  isLoggedIn$: Observable<boolean>;
 
-  constructor(
-    breakpointObserver: BreakpointObserver,
-    private _tokenService: TokenService,
-    private _drawerService: DrawerService
-  ) {
+  constructor(breakpointObserver: BreakpointObserver, router: Router) {
     this.isLessThanSmall$ = breakpointObserver
       .observe([Breakpoints.Small, Breakpoints.XSmall])
       .pipe(
@@ -31,11 +24,11 @@ export class AppComponent implements AfterViewInit {
           refCount: false,
         })
       );
-    this.isLoggedIn$ = this._tokenService
-      .getAccessToken$()
-      .pipe(map((accessToken) => !!accessToken));
-  }
-  ngAfterViewInit(): void {
-    this._drawerService.setDrawer(this.drawer);
+    router.events.subscribe((e: Event) => {
+      if (e instanceof NavigationEnd) {
+        const { urlAfterRedirects } = e as NavigationEnd;
+        this.isInLoginPage = urlAfterRedirects.includes('login');
+      }
+    });
   }
 }

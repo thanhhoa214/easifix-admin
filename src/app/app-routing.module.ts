@@ -24,7 +24,7 @@ const routes: Routes = [
       ),
   },
   { path: '404', component: NotFoundComponent },
-  { path: '', redirectTo: 'templates', pathMatch: 'full' },
+  { path: '', redirectTo: 'users', pathMatch: 'full' },
   { path: '**', redirectTo: '/404', pathMatch: 'full' },
 ];
 

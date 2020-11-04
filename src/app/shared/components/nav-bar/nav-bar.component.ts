@@ -1,7 +1,6 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { TokenService } from 'src/app/token.service';
 import { SnackBarSuccessComponent } from '../snack-bar-success/snack-bar-success.component';
 
 @Component({
@@ -10,13 +9,8 @@ import { SnackBarSuccessComponent } from '../snack-bar-success/snack-bar-success
   styleUrls: ['./nav-bar.component.scss'],
 })
 export class NavBarComponent {
-  @Input() isLoggedIn = false;
   @Output() toggleSidebar = new EventEmitter();
-  constructor(
-    private _router: Router,
-    private _snackBar: MatSnackBar,
-    private _tokenService: TokenService
-  ) {}
+  constructor(private _router: Router, private _snackBar: MatSnackBar) {}
 
   notificationCount = 2;
   mailCount = 2;
@@ -29,7 +23,6 @@ export class NavBarComponent {
       data: { title: 'Success !', message: 'Logout successfully' },
     });
 
-    this._tokenService.removeAccessToken();
     this._router.navigateByUrl('/auth');
   }
 }

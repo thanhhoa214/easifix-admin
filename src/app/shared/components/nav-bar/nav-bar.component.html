@@ -6,12 +6,10 @@
     <button mat-icon-button (click)="toggleSidebar.emit()" class="ml-n2">
       <mat-icon>menu</mat-icon>
     </button>
-    <button [routerLink]="isLoggedIn ? ['/'] : []" mat-button>
-      2USD Dashboard
-    </button>
+    <button routerLink="/" mat-button>Easifix Dashboard</button>
   </div>
 
-  <div class="flex-center-center justify-content-around" *ngIf="isLoggedIn">
+  <div class="flex-center-center justify-content-around">
     <button
       mat-icon-button
       class="mx-2 flex-center-center"

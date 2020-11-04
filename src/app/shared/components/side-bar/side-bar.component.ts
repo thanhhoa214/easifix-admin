@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { TokenService } from 'src/app/token.service';
 import { SnackBarSuccessComponent } from '../snack-bar-success/snack-bar-success.component';
 interface TreeNode {
   name: string;
@@ -21,34 +20,19 @@ const TREE_DATA: TreeNode[] = [
   //   ],
   // },
   {
-    name: 'Templates',
-    route: '/templates',
-    icon: 'web',
-  },
-  {
-    name: 'Stores',
-    route: '/stores',
-    icon: 'storefront',
-  },
-  {
-    name: 'Screens',
-    route: '/screens',
-    icon: 'cast',
-  },
-  {
-    name: 'Displays',
-    route: '/displays',
-    icon: 'screen_share',
-  },
-  {
-    name: 'Accounts',
-    route: '/accounts',
+    name: 'Users',
+    route: '/users',
     icon: 'account_circle',
   },
   {
-    name: 'Products',
-    route: '/products',
-    icon: 'view_list',
+    name: 'Fixers',
+    route: '/fixers',
+    icon: 'build_circle',
+  },
+  {
+    name: 'Transactions',
+    route: '/transactions',
+    icon: 'swap_horizontal_circle',
   },
 ];
 @Component({
@@ -59,11 +43,7 @@ const TREE_DATA: TreeNode[] = [
 export class SideBarComponent {
   treeData = TREE_DATA;
   selectedNode: TreeNode = TREE_DATA[0];
-  constructor(
-    private _router: Router,
-    private _snackBar: MatSnackBar,
-    private _tokenService: TokenService
-  ) {}
+  constructor(private _router: Router, private _snackBar: MatSnackBar) {}
 
   setSelectedNode(node: TreeNode): void {
     this.selectedNode = node;
@@ -79,8 +59,6 @@ export class SideBarComponent {
       panelClass: 'mat-snack-bar-success',
       data: { title: 'Success !', message: 'Logout successfully' },
     });
-    this._tokenService.removeAccessToken();
-
     this._router.navigateByUrl('/auth');
   }
 }
