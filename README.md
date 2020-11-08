@@ -14,6 +14,13 @@ Run `npm run build` to build the project. The build artifacts will be stored in 
 
 Run `npm run build:prod` to build the project in **production mode**. The build artifacts will be stored in the `dist/` directory.
 
+## Development with Docker
+
+Run `docker build -t easifix-admin:v0.0.1 .` to build an image.
+
+Run `docker run -p 80:8080 easifix-admin:v0.0.1 .` to run an image while development.
+Run `npm run build:prod` to build the project in **production mode**. The build artifacts will be stored in the `dist/` directory.
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

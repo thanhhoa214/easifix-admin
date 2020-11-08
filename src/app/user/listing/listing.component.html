@@ -1,152 +1,105 @@
-<div class="container">
-  <br />
-  <h1>
-    <p style="color: blue; font-weight: 500; font-size: 40px">
-      Accounts Management
-    </p>
+<div class="main-container container-fluid py-2 d-flex flex-column">
+  <h1 class="d-flex align-items-center ml-3 mt-2 mb-3 mat-display-1">
+    <mat-icon style="zoom: 1.5">account_circle</mat-icon>
+    <span class="ml-3">Users</span>
   </h1>
-  <div class="search-area">
-    <!-- Search form -->
-    <input
-      class="form-control"
-      type="text"
-      placeholder="Find By ID Account"
-      aria-label="Search"
-    />
-    <button type="button" class="btn btn-primary">Search</button>
-  </div>
   <app-create-button></app-create-button>
+  <div class="d-flex justify-content-end mb-2">
+    <input class="form-control mx-3 w-100" placeholder="Find by account name" />
+    <button mat-raised-button color="primary">
+      Search
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+  <div class="p-3 table-wrapper">
+    <table class="table table-hover w-100">
+      <thead>
+        <tr class="bg-dark text-light text-center">
+          <th scope="col">ID</th>
 
-  <br />
-  <table class="table">
-    <thead class="thead-blue">
-      <tr>
-        <th
-          scope="col"
-          class="tbtitle"
-          style="color: white; text-align: center"
+          <th scope="col">Ảnh đại diện</th>
+          <th scope="col">Tên</th>
+          <th scope="col">Số điện thoại</th>
+          <th scope="col">Địa chỉ</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <tr
+          *ngFor="let user of dataService.getUsers(); index as index"
+          class="cursor-pointer"
+          [routerLink]="user.id"
         >
-          No
-        </th>
-        <th
-          scope="col"
-          class="tbtitle"
-          style="color: white; text-align: center"
-        >
-          ID Account
-        </th>
-        <th
-          scope="col"
-          class="tbtitle"
-          style="color: white; text-align: center"
-        >
-          Name
-        </th>
-        <th
-          scope="col"
-          class="tbtitle"
-          style="color: white; text-align: center"
-        >
-          Store ID
-        </th>
-        <th
-          scope="col"
-          class="tbtitle"
-          style="color: white; text-align: center"
-        >
-          Actions
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row" style="text-align: center">1</th>
-        <td style="text-align: center">HuyNT</td>
-        <td style="text-align: center">Nguyen Trung Huy</td>
-        <td style="text-align: center">Passio_THT01</td>
-        <td style="text-align: center">
-          <button type="button" class="btn btn-outline-warning waves-effect">
-            Inactive
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row" style="text-align: center">2</th>
-        <td style="text-align: center">DatLT</td>
-        <td style="text-align: center">Le Thanh Dat</td>
-        <td style="text-align: center">Passio_THT03</td>
-        <td style="text-align: center">
-          <button type="button" class="btn btn-outline-warning waves-effect">
-            Inactive
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row" style="text-align: center">3</th>
-        <td style="text-align: center">HoaNT</td>
-        <td style="text-align: center">Nguyen Thanh Hoa</td>
-        <td style="text-align: center">PZCompany_LG303</td>
-        <td style="text-align: center">
-          <button type="button" class="btn btn-outline-warning waves-effect">
-            Inactive
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row" style="text-align: center">4</th>
-        <td style="text-align: center">HuyKTM</td>
-        <td style="text-align: center">Trieu Minh Huy</td>
-        <td style="text-align: center">Lotte_CT01</td>
-        <td style="text-align: center">
-          <button type="button" class="btn btn-outline-warning waves-effect">
-            Inactive
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row" style="text-align: center">5</th>
-        <td style="text-align: center">HuyNT</td>
-        <td style="text-align: center">Nguyen Trung Huy</td>
-        <td style="text-align: center">Passio_THT01</td>
-        <td style="text-align: center">
-          <button type="button" class="btn btn-outline-warning waves-effect">
-            Inactive
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row" style="text-align: center">6</th>
-        <td style="text-align: center">DatLT</td>
-        <td style="text-align: center">Le Thanh Dat</td>
-        <td style="text-align: center">Passio_THT03</td>
-        <td style="text-align: center">
-          <button type="button" class="btn btn-outline-warning waves-effect">
-            Inactive
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row" style="text-align: center">7</th>
-        <td style="text-align: center">HoaNT</td>
-        <td style="text-align: center">Nguyen Thanh Hoa</td>
-        <td style="text-align: center">PZCompany_LG303</td>
-        <td style="text-align: center">
-          <button type="button" class="btn btn-outline-warning waves-effect">
-            Inactive
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row" style="text-align: center">8</th>
-        <td style="text-align: center">HuyKTM</td>
-        <td style="text-align: center">Trieu Minh Huy</td>
-        <td style="text-align: center">Lotte_CT01</td>
-        <td style="text-align: center">
-          <button type="button" class="btn btn-outline-warning waves-effect">
-            Inactive
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+          <th scope="row">{{ user.id }}</th>
+          <td>
+            <div class="img-wrapper mx-auto">
+              <img
+                [src]="
+                  'https://randomuser.me/api/portraits/' +
+                  (index % 4 ? '' : 'wo') +
+                  'men/' +
+                  index +
+                  '.jpg'
+                "
+                class="h-100 img-fluid img-responsive"
+              />
+            </div>
+          </td>
+          <td>{{ randomName() }}</td>
+          <td>{{ user.phone }}</td>
+          <td>{{ randomAddresses() }}</td>
+        </tr>
+      </tbody>
+
+      <!-- <ng-template #skeleton>
+  <tbody class="text-center">
+  <tr *ngFor="let i of [1, 2, 3, 4, 5, 6]">
+  <th scope="row">=========</th>
+  <td>
+  <div class="img-wrapper mx-auto">
+  <img
+  src="assets/images/search.svg"
+  class="h-100 img-fluid img-responsive"
+  />
+  </div>
+  </td>
+  <td>==========<br />==========</td>
+  <td>==========<br />==========</td>
+  <td>==========</td>
+  <td>=============<br />=============<br />=============</td>
+  </tr>
+  </tbody>
+  </ng-template> -->
+    </table>
+  </div>
+  <nav class="w-100 d-flex justify-content-end">
+    <ul class="pagination">
+      <li
+        class="page-item"
+        [class.active]="selectedPage == 1"
+        (click)="selectedPage = 1"
+      >
+        <span class="page-link" style="cursor: pointer">1</span>
+      </li>
+      <li
+        class="page-item"
+        [class.active]="selectedPage == 2"
+        (click)="selectedPage = 2"
+      >
+        <span class="page-link" style="cursor: pointer">2</span>
+      </li>
+      <li
+        class="page-item"
+        [class.active]="selectedPage == 3"
+        (click)="selectedPage = 3"
+      >
+        <span class="page-link" style="cursor: pointer">3</span>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 </div>
