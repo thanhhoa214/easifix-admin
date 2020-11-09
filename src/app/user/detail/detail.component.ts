@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { User } from 'src/app/data.model';
+import { DataService } from 'src/app/data.service';
 
 @Component({
   selector: 'app-detail',
@@ -7,13 +9,35 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./detail.component.scss'],
 })
 export class DetailComponent implements OnInit {
-  item;
+  fixer: User;
+  name: string;
+  avatar: string;
+  address: string;
 
-  constructor(private _activatedRoute: ActivatedRoute) {}
+  constructor(
+    private _activatedRoute: ActivatedRoute,
+    private _dataService: DataService,
+    private _router: Router
+  ) {}
 
   ngOnInit(): void {
-    const id = this._activatedRoute.snapshot.params.id;
-    this.item = id;
-    console.log(id);
+    const {
+      0: name,
+      1: address,
+      2: avatar,
+    } = this._activatedRoute.snapshot.queryParams;
+    console.log(this._activatedRoute.snapshot.queryParams);
+
+    this.name = name;
+    this.avatar = avatar;
+    this.address = address;
+    this.fixer = this._dataService.getUser('1');
+  }
+  getPagingArray(totolItem: number) {
+    const pageCount = Math.round(totolItem);
+    return Array(pageCount).fill(1);
+  }
+  back() {
+    this._router.navigateByUrl('/fixers');
   }
 }

@@ -1,6 +1,61 @@
-<h1>
-  detail works
-  <div class="badge badge-success">
-    {{ item }}
+<div class="main-container container-fluid py-2" *ngIf="fixer">
+  <h1 class="d-flex align-items-center">
+    <mat-icon>account_circle</mat-icon>
+    <span class="ml-2">Chi tiết khách hàng </span>
+  </h1>
+  <div class="d-flex flex-column">
+    <div class="d-flex flex-column">
+      <mat-card class="p-4 my-2">
+        <mat-card-title>
+          {{ name }}
+        </mat-card-title>
+        <mat-card-subtitle class="border-bottom">{{
+          address
+        }}</mat-card-subtitle>
+        <mat-card-content class="d-flex flex-column">
+          <div class="d-flex justify-content-start">
+            <div class="img-wrapper mx-auto">
+              <img [src]="avatar" class="h-100 img-fluid img-responsive" />
+            </div>
+            <div class="px-4 d-flex align-items-center flex-fill">
+              <div>
+                <span>Tên:</span>
+                <div class="h5">
+                  {{ name }}
+                </div>
+                <div class="divider py-1"></div>
+                <span>Số điện thoại:</span>
+                <div class="h5">
+                  {{ fixer.phone }}
+                </div>
+                <div class="divider py-1"></div>
+                <span>Địa chỉ:</span>
+                <div class="h5">{{ address }}</div>
+                <div class="divider py-1"></div>
+                <span>Đánh giá trung bình:</span>
+                <div class="h5">
+                  <div class="d-flex">
+                    <div
+                      class="border rounded-circle p-1 d-flex justify-content-center align-items-center"
+                      style="background-color: rgba(0, 0, 0, 0.2)"
+                      *ngFor="let user of getPagingArray(fixer.rating)"
+                    >
+                      <mat-icon style="color: rgb(255, 255, 47)">star</mat-icon>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
-</h1>
+  <div
+    class="d-flex flex-column flex-sm-row justify-content-end flex-gap border-top mt-3 pt-3"
+  >
+    <button mat-stroked-button class="col-md-2" (click)="back()">
+      Trở lại
+    </button>
+  </div>
+</div>

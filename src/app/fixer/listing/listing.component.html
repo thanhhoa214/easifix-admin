@@ -1,13 +1,13 @@
 <div class="main-container container-fluid py-2 d-flex flex-column">
   <h1 class="d-flex align-items-center ml-3 mt-2 mb-3 mat-display-1">
     <mat-icon style="zoom: 1.5">build_circle</mat-icon>
-    <span class="ml-3">Fixers</span>
+    <span class="ml-3">Danh sách kỹ thuật viên</span>
   </h1>
   <app-create-button></app-create-button>
   <div class="d-flex justify-content-end mb-2">
-    <input class="form-control mx-3 w-100" placeholder="Find by account name" />
+    <input class="form-control mx-3 w-100" placeholder="Tìm kiếm" />
     <button mat-raised-button color="primary">
-      Search
+      Tìm kiếm
       <mat-icon>search</mat-icon>
     </button>
   </div>
@@ -43,12 +43,13 @@
           <td>{{ user.phone }}</td>
           <td>{{ user.address }}, {{ user.province }}</td>
           <td>
-            <div class="d-flex">
+            <div class="d-flex justify-content-end">
               <div
-                class="border rounded-circle bg-secondary p-1 d-flex justify-content-center align-items-center"
+                class="border rounded-circle p-1 d-flex justify-content-center align-items-center"
+                style="background-color: rgba(0, 0, 0, 0.2)"
                 *ngFor="let user of getPagingArray(user.rating)"
               >
-                <mat-icon style="color: rgb(245, 245, 169)">star</mat-icon>
+                <mat-icon style="color: rgb(255, 255, 47)">star</mat-icon>
               </div>
             </div>
           </td>

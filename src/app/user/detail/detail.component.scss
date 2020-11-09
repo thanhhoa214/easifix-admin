@@ -1,0 +1,13 @@
+.mat-display-1 mat-icon {
+  transform: scale(1.5);
+}
+
+.img-wrapper {
+  height: 15rem;
+  overflow: hidden;
+  border-radius: 50%;
+
+  img {
+    object-fit: cover;
+  }
+}

@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Router } from '@angular/router';
 import { DataService } from 'src/app/data.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { DataService } from 'src/app/data.service';
 })
 export class ListingComponent {
   selectedPage: number = 1;
-  constructor(public dataService: DataService) {}
+  constructor(public dataService: DataService, private router: Router) {}
   randomName(): string {
     const firstNames = ['Nguyễn', 'Trần', 'Đào', 'Đỗ', 'Lê'];
     const subNames = ['Thanh', 'Văn', 'Trung', 'Bá'];
@@ -37,5 +38,8 @@ export class ListingComponent {
   }
   getNumber(length: number) {
     return Math.floor(Math.random() * length);
+  }
+  goToDetail(id, ...params) {
+    this.router.navigate(['users', id], { queryParams: params });
   }
 }

@@ -1,13 +1,13 @@
 <div class="main-container container-fluid py-2 d-flex flex-column">
   <h1 class="d-flex align-items-center ml-3 mt-2 mb-3 mat-display-1">
     <mat-icon style="zoom: 1.5">account_circle</mat-icon>
-    <span class="ml-3">Users</span>
+    <span class="ml-3">Danh sách khách hàng</span>
   </h1>
   <app-create-button></app-create-button>
   <div class="d-flex justify-content-end mb-2">
-    <input class="form-control mx-3 w-100" placeholder="Find by account name" />
+    <input class="form-control mx-3 w-100" placeholder="Tìm kiếm" />
     <button mat-raised-button color="primary">
-      Search
+      Tìm kiếm
       <mat-icon>search</mat-icon>
     </button>
   </div>
@@ -24,30 +24,41 @@
         </tr>
       </thead>
       <tbody class="text-center">
-        <tr
+        <ng-container
           *ngFor="let user of dataService.getUsers(); index as index"
-          class="cursor-pointer"
-          [routerLink]="user.id"
         >
-          <th scope="row">{{ user.id }}</th>
-          <td>
-            <div class="img-wrapper mx-auto">
-              <img
-                [src]="
+          <ng-container *ngIf="randomName() as name">
+            <ng-container *ngIf="randomAddresses() as address">
+              <ng-container
+                *ngIf="
                   'https://randomuser.me/api/portraits/' +
                   (index % 4 ? '' : 'wo') +
                   'men/' +
                   index +
-                  '.jpg'
+                  '.jpg' as avatar
                 "
-                class="h-100 img-fluid img-responsive"
-              />
-            </div>
-          </td>
-          <td>{{ randomName() }}</td>
-          <td>{{ user.phone }}</td>
-          <td>{{ randomAddresses() }}</td>
-        </tr>
+              >
+                <tr
+                  class="cursor-pointer"
+                  (click)="goToDetail(user.id, name, address, avatar)"
+                >
+                  <th scope="row">{{ user.id }}</th>
+                  <td>
+                    <div class="img-wrapper mx-auto">
+                      <img
+                        [src]="avatar"
+                        class="h-100 img-fluid img-responsive"
+                      />
+                    </div>
+                  </td>
+                  <td>{{ name }}</td>
+                  <td>{{ user.phone }}</td>
+                  <td>{{ address }}</td>
+                </tr>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </ng-container>
       </tbody>
 
       <!-- <ng-template #skeleton>

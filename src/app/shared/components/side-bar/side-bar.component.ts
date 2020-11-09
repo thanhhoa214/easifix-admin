@@ -20,17 +20,17 @@ const TREE_DATA: TreeNode[] = [
   //   ],
   // },
   {
-    name: 'Users',
+    name: 'Khách hàng',
     route: '/users',
     icon: 'account_circle',
   },
   {
-    name: 'Fixers',
+    name: 'Kỹ thuật viên',
     route: '/fixers',
     icon: 'build_circle',
   },
   {
-    name: 'Transactions',
+    name: 'Lịch sử',
     route: '/transactions',
     icon: 'swap_horizontal_circle',
   },
