@@ -1,15 +1,15 @@
 {
-  "name": "digital-menu-admin",
+  "name": "easifix-admin",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
     "build": "ng build",
     "build:prod": "ng build --prod",
-    "build-gitlab": "ng build --base-href=/digital-menu-admin/",
+    "build-gitlab": "ng build --base-href=/easifix-admin/",
     "test": "ng test",
     "lint": "ng lint",
-    "gen": "rm -rf $PWD/src/generated/ && npx @openapitools/openapi-generator-cli generate -i digital-menu-api.yaml -g typescript-angular -o $PWD/src/generated/",
+    "gen": "rm -rf $PWD/src/generated/ && npx @openapitools/openapi-generator-cli generate -i easifix-api.yaml -g typescript-angular -o $PWD/src/generated/",
     "e2e": "ng e2e"
   },
   "private": true,
