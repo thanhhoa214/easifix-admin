@@ -52,6 +52,35 @@
           </div>
         </mat-card-content>
       </mat-card>
+      <mat-card class="p-4 my-2">
+        <mat-card-title> Dịch vụ </mat-card-title>
+        <mat-card-content class="d-flex flex-column">
+          <mat-list *ngFor="let category of fixer.categories">
+            <h3 class="d-flex align-items-center">
+              <mat-icon mat-list-icon>verified_user</mat-icon>
+              <div
+                class="w-100 d-flex justify-content-between align-items-center ml-2"
+              >
+                <span>{{ category.name }}</span>
+              </div>
+            </h3>
+            <mat-list-item
+              *ngFor="let service of category.services; index as serviceIndex"
+            >
+              <div class="d-flex justify-content-between w-100">
+                <div>
+                  <small class="mx-1">({{ serviceIndex }})</small>
+                  {{ service.name }}
+                </div>
+                <div class="text-right">
+                  {{ service.price | currency: "":"":"4.0-0" }}
+                </div>
+              </div>
+              <mat-divider></mat-divider>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
     </div>
   </div>
   <div
