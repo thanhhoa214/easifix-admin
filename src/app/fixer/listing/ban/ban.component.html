@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Cấm kỹ thuật viên "{{ data.name }}"</h1>
+<div mat-dialog-content>
+  <p>Bạn có chắc chắn muốn cấm kỹ thuật viên này?</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data.id" cdkFocusInitial>
+    Chắc chắn
+  </button>
+</div>

@@ -22,6 +22,7 @@
           <th scope="col">Số điện thoại</th>
           <th scope="col">Địa chỉ</th>
           <th scope="col">Đánh giá trung bình</th>
+          <th scope="col">Thao tác</th>
         </tr>
       </thead>
       <tbody class="text-center">
@@ -29,6 +30,7 @@
           *ngFor="let user of dataService.getUsers()"
           class="cursor-pointer"
           [routerLink]="user.id"
+          [class.bg-blurr]="banUsers.includes(user.id)"
         >
           <th scope="row">{{ user.id }}</th>
           <td>
@@ -52,6 +54,24 @@
                 <mat-icon style="color: rgb(255, 255, 47)">star</mat-icon>
               </div>
             </div>
+          </td>
+          <td>
+            <button
+              mat-button
+              color="primary"
+              (click)="permitUser($event, user.id, user.name)"
+              *ngIf="banUsers.includes(user.id)"
+            >
+              Cho phép
+            </button>
+            <button
+              mat-button
+              color="accent"
+              (click)="banUser($event, user.id, user.name)"
+              *ngIf="!banUsers.includes(user.id)"
+            >
+              Cấm
+            </button>
           </td>
         </tr>
       </tbody>
